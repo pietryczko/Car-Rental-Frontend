@@ -1,21 +1,33 @@
-package com.CarRental.Frontend.views;
+package com.CarRental.Frontend.views.car;
 
 import com.CarRental.Frontend.domain.dto.CarDto;
 import com.CarRental.Frontend.services.CarService;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "car")
-public class CarPanel extends VerticalLayout {
+@PageTitle("Car Panel")
+public class CarGridView extends VerticalLayout {
+
+    private final CarForm form;
     Grid<CarDto> grid = new Grid<>(CarDto.class);
     private CarService carService;
-    public CarPanel(CarService carService) {
+
+    public CarGridView(CarService carService) {
         this.carService = carService;
     addClassName("car-view");
     setSizeFull();
     configureGrid();
-    add(grid);
+
+    form = new CarForm();
+
+    Div content = new Div(form, grid);
+    content.addClassName("content");
+
+    add(content);
     updateList();
     }
 
