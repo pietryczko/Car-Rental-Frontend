@@ -21,6 +21,10 @@ public class CarService {
         return carService;
     }
 
+    public void save(CarDto carDto) {
+        carClient.createCar(carDto);
+    }
+
     public List<CarDto> getCars() {
         return carClient.getCars();
     }

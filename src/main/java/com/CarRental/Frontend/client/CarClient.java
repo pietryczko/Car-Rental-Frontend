@@ -54,4 +54,14 @@ public class CarClient {
             return null;
         }
     }
+
+    public void createCar(CarDto carDto) {
+        URI uri = UriComponentsBuilder.fromUriString(CAR_URL)
+                .build().toUri();
+        try {
+            restTemplate.postForObject(uri, carDto, Void.class);
+        }catch (RestClientException e) {
+            log.error(e.getMessage(), e);
+        }
+    }
 }

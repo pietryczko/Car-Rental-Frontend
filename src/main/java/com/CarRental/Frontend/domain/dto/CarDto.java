@@ -17,6 +17,6 @@ public class CarDto {
     private String licencePlateNumber;
     private String brand;
     private String model;
-    private List<Long> rentsId;
     private CarStatus carStatus;
+    private List<Long> rentsId;
 }
