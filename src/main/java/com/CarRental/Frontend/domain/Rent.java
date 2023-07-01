@@ -1,5 +1,6 @@
-package com.CarRental.Frontend.domain.dto;
+package com.CarRental.Frontend.domain;
 
+import com.CarRental.Frontend.domain.status.RentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RentDto {
+public class Rent {
     private long id;
     private RentStatus rentStatus;
     private BigDecimal cost;

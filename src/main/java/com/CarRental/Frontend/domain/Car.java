@@ -1,18 +1,16 @@
-package com.CarRental.Frontend.domain.dto;
+package com.CarRental.Frontend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.CarRental.Frontend.domain.status.CarStatus;
+import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CarDto {
+public class Car {
     private long id;
     private String licencePlateNumber;
     private String brand;

@@ -1,8 +1,8 @@
 package com.CarRental.Frontend.views.car;
 
 
-import com.CarRental.Frontend.domain.dto.CarDto;
-import com.CarRental.Frontend.domain.dto.CarStatus;
+import com.CarRental.Frontend.domain.Car;
+import com.CarRental.Frontend.domain.status.CarStatus;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -20,16 +20,16 @@ import com.vaadin.flow.shared.Registration;
 
 public class CarForm extends FormLayout {
 
-    TextField brand = new TextField("Car Brand");
-    TextField model = new TextField("Car Model");
-    TextField licencePlateNumber = new TextField("Licence Plate Number");
-    ComboBox<CarStatus> carStatus = new ComboBox("Status");
+    private TextField brand = new TextField("Car Brand");
+    private TextField model = new TextField("Car Model");
+    private TextField licencePlateNumber = new TextField("Licence Plate Number");
+    private ComboBox<CarStatus> carStatus = new ComboBox("Status");
 
     Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Close");
 
-    Binder<CarDto> binder = new BeanValidationBinder<>(CarDto.class);
+    Binder<Car> binder = new BeanValidationBinder<>(Car.class);
 
     public CarForm() {
         addClassName("car-form");
@@ -42,8 +42,8 @@ public class CarForm extends FormLayout {
             createButtonLayout());
     }
 
-    public void setCar(CarDto carDto) {
-        binder.setBean(carDto);
+    public void setCar(Car car) {
+        binder.setBean(car);
     }
 
     private Component createButtonLayout() {
@@ -71,27 +71,27 @@ public class CarForm extends FormLayout {
 
     // Events
     public static abstract class CarFormEvent extends ComponentEvent<CarForm> {
-        private CarDto carDto;
+        private Car car;
 
-        protected CarFormEvent(CarForm source, CarDto carDto) {
+        protected CarFormEvent(CarForm source, Car car) {
             super(source, false);
-            this.carDto = carDto;
+            this.car = car;
         }
 
-        public CarDto getCarDto() {
-            return carDto;
+        public Car getCarDto() {
+            return car;
         }
     }
 
     public static class SaveEvent extends CarFormEvent {
-        SaveEvent(CarForm source, CarDto carDto) {
-            super(source, carDto);
+        SaveEvent(CarForm source, Car car) {
+            super(source, car);
         }
     }
 
     public static class DeleteEvent extends CarFormEvent {
-        DeleteEvent(CarForm source, CarDto carDto) {
-            super(source, carDto);
+        DeleteEvent(CarForm source, Car car) {
+            super(source, car);
         }
 
     }

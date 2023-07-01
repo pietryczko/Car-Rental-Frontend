@@ -1,7 +1,6 @@
 package com.CarRental.Frontend.client;
 
-import com.CarRental.Frontend.domain.dto.CarDto;
-import lombok.NoArgsConstructor;
+import com.CarRental.Frontend.domain.Car;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -32,10 +31,10 @@ public class CarClient {
         return carClient;
     }
 
-    public List<CarDto> getCars(){
+    public List<Car> getCars(){
         URI uri = UriComponentsBuilder.fromUriString(CAR_URL).build().toUri();
         try{
-            CarDto[] cars = restTemplate.getForObject(uri, CarDto[].class);
+            Car[] cars = restTemplate.getForObject(uri, Car[].class);
             return Arrays.asList(Objects.requireNonNull(cars));
         } catch (RestClientException e) {
             log.error(e.getMessage(), e);
@@ -43,11 +42,10 @@ public class CarClient {
         }
     }
 
-    public CarDto getCar(Long carId) {
+    public Car getCar(Long carId) {
         URI uri = UriComponentsBuilder.fromUriString((CAR_URL + "/" + carId)).build().toUri();
-
         try {
-            CarDto car = restTemplate.getForObject(uri, CarDto.class);
+            Car car = restTemplate.getForObject(uri, Car.class);
             return (Objects.requireNonNull(car));
         } catch (RestClientException e) {
             log.error(e.getMessage(), e);
@@ -55,12 +53,21 @@ public class CarClient {
         }
     }
 
-    public void createCar(CarDto carDto) {
+    public void createCar(Car car) {
         URI uri = UriComponentsBuilder.fromUriString(CAR_URL)
                 .build().toUri();
         try {
-            restTemplate.postForObject(uri, carDto, Void.class);
+            restTemplate.postForObject(uri, car, Void.class);
         }catch (RestClientException e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
+    public void remove(Car car) {
+        URI uri = UriComponentsBuilder.fromUriString((CAR_URL + "/" + car.getId())).build().toUri();
+        try {
+            restTemplate.delete(uri);
+        } catch (RestClientException e) {
             log.error(e.getMessage(), e);
         }
     }

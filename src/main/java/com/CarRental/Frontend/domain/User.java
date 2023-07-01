@@ -1,18 +1,17 @@
-package com.CarRental.Frontend.domain.dto;
+package com.CarRental.Frontend.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
+public class User {
     private long id;
     private String name;
     private String surname;

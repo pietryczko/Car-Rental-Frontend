@@ -1,7 +1,7 @@
 package com.CarRental.Frontend.services;
 
 import com.CarRental.Frontend.client.CarClient;
-import com.CarRental.Frontend.domain.dto.CarDto;
+import com.CarRental.Frontend.domain.Car;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +21,15 @@ public class CarService {
         return carService;
     }
 
-    public void save(CarDto carDto) {
-        carClient.createCar(carDto);
+    public void save(Car car) {
+        carClient.createCar(car);
     }
 
-    public List<CarDto> getCars() {
+    public void delete(Car car) {
+        carClient.remove(car);
+    }
+
+    public List<Car> getCars() {
         return carClient.getCars();
     }
 }
