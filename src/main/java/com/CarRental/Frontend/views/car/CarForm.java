@@ -12,6 +12,8 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.BigDecimalField;
+import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
@@ -23,6 +25,7 @@ public class CarForm extends FormLayout {
     private TextField brand = new TextField("Car Brand");
     private TextField model = new TextField("Car Model");
     private TextField licencePlateNumber = new TextField("Licence Plate Number");
+    private BigDecimalField price = new BigDecimalField("Price per day");
     private ComboBox<CarStatus> carStatus = new ComboBox("Status");
 
     Button save = new Button("Save");
@@ -38,6 +41,7 @@ public class CarForm extends FormLayout {
         add(brand,
             model,
             licencePlateNumber,
+            price,
             carStatus,
             createButtonLayout());
     }

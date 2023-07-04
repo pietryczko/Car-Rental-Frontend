@@ -18,6 +18,7 @@ public class CarView extends VerticalLayout {
     public CarView() {
         carForm = new CarForm();
         addClassName("car-view");
+        grid.setColumns("id", "brand", "model", "licencePlateNumber", "price", "carStatus", "rentsId");
         setSizeFull();
         updateList();
         Button addCar = new Button("Add Car", event -> addContact());
