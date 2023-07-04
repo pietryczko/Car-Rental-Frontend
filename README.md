@@ -10,13 +10,13 @@ BackEnd \
 git clone https://github.com/pietryczko/Car-Rental-Backend.git\
 	•	Create a MySql connection as described in the application.properties.\
 	•	Build the project\
-./gradlew build\
+./gradlew build
 
 FrontEnd\
 	•	Clone the repository\
 git clone  https://github.com/pietryczko/Car-Rental-Frontend.git\
 	•	Build the project\
-./gradlew build\
+./gradlew build
 
 How to run it
 Once you have the BackEnd and FrontEnd running start by this address:
