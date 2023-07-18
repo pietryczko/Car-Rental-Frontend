@@ -4,6 +4,7 @@ import com.CarRental.Frontend.domain.Car;
 import com.CarRental.Frontend.services.CarService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -16,6 +17,7 @@ public class CarView extends VerticalLayout {
     private CarForm carForm;
 
     public CarView() {
+        Anchor back = new Anchor("admin", "Back");
         carForm = new CarForm();
         addClassName("car-view");
         grid.setColumns("id", "brand", "model", "licencePlateNumber", "price", "carStatus", "rentsId");
@@ -23,7 +25,7 @@ public class CarView extends VerticalLayout {
         updateList();
         Button addCar = new Button("Add Car", event -> addContact());
 
-        add(addCar,carForm,grid);
+        add(addCar,carForm,grid,back);
 
         carForm.addSaveListener(this::saveCar);
         carForm.addDeleteListener(this::deleteCar);

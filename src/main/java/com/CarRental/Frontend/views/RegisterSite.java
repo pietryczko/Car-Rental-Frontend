@@ -16,6 +16,8 @@ import com.vaadin.flow.router.Route;
 public class RegisterSite extends VerticalLayout {
 
     public RegisterSite() {
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setAlignItems(Alignment.CENTER);
         EmailField emailField = new EmailField();
         emailField.setLabel("Email address");
 

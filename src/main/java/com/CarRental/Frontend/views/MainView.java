@@ -35,7 +35,7 @@ public class MainView extends VerticalLayout {
 
         showPrice.addClickListener(event -> {
             try {
-                cost.setText(form.getPrice() + "$");
+                cost.setText("Your rental for " + form.getDays() + " days, will cost: " + form.getPrice() + "$");
                 cost.setVisible(true);
                 rentCar.setVisible(true);
             } catch (DataNotValidate e) {
@@ -71,8 +71,9 @@ public class MainView extends VerticalLayout {
     private HorizontalLayout getLoginButtons() {
         Anchor logIn = new Anchor("login", "Log In");
         Anchor register = new Anchor("register", "Register");
+        Anchor adminPanel = new Anchor("admin", "Admin Panel");
         setSizeFull();
-        HorizontalLayout layout = new HorizontalLayout(logIn, register);
+        HorizontalLayout layout = new HorizontalLayout(logIn, register,adminPanel);
         layout.setVerticalComponentAlignment(Alignment.END, layout);
         return layout;
     }

@@ -39,7 +39,7 @@ public class RentProcessor {
         }
     }
 
-    private long calculateDays() throws DataNotValidate {
+    public long calculateDays() throws DataNotValidate {
         long days = 0;
         if (validate()) {
             LocalDate data1 = starDate.getValue();

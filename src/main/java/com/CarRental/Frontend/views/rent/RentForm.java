@@ -73,4 +73,8 @@ public class RentForm extends HorizontalLayout {
     public Rent createRent() throws DataNotValidate {
         return rentProcessor.createRent();
     }
+
+    public long getDays() throws DataNotValidate {
+       return rentProcessor.calculateDays();
+    }
 }
